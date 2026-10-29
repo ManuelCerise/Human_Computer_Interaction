@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esplora 9 Progetti - unitoCrowFunding</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay-bg"></div>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand">
+                <img src="logo-unito.png" alt="Logo UniTo" onerror="this.src='https://via.placeholder.com/150x45/fddb00/002a5c?text=UNITO';">
+                unitoCrowFunding
+            </a>
+            <div class="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="bi bi-house-door me-2"></i> Home</a></li>
+                <li><a href="esplora.html" class="active"><i class="bi bi-compass me-2"></i> Esplora Progetti</a></li>
+                <li><a href="proponi.html"><i class="bi bi-plus-circle me-2"></i> Proponi Progetto</a></li>
+                <li><a href="faq.html"><i class="bi bi-question-circle me-2"></i> FAQ</a></li>
+                <li style="margin-top: auto;"><a href="#" class="btn btn-outline" style="width: 100%;"><i class="bi bi-person"></i> Accedi</a></li>
+                <li><a href="#" class="btn btn-warning" style="width: 100%;"><i class="bi bi-lightning-charge-fill"></i> Registrati</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb-wrap">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Esplora Progetti</li>
+            </ul>
+        </div>
+    </div>
+
+    <main class="main-content container">
+        <h1>Campagne Attive (9)</h1>
+
+        <!-- FILTRI E AUTO-SUGGEST FUNZIONANTI -->
+        <div class="filters-card">
+            <form style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; align-items: end;">
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label" for="search"><i class="bi bi-search"></i> Cerca nome</label>
+                    <input type="text" class="form-control" id="search" placeholder="Inizia a digitare..." autocomplete="off">
+                    <ul id="suggestions" class="suggestions-list"></ul>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label" for="cat"><i class="bi bi-tag"></i> Categoria</label>
+                    <select class="form-control" id="cat">
+                        <option>Tutte le categorie</option>
+                        <option>Medicina</option>
+                        <option>Ambiente</option>
+                        <option>Tecnologia</option>
+                        <option>Ricerca Umanistica</option>
+                    </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                    <label class="form-label" for="sort"><i class="bi bi-filter"></i> Ordina per</label>
+                    <select class="form-control" id="sort">
+                        <option>Scadenza imminente</option>
+                        <option>Più recenti</option>
+                        <option>Vicini all'obiettivo</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
+        <div class="grid grid-3" id="projects-grid">
+            <a href="progetto.html?id=onco" class="card-link project-card" data-title="Macchinario per Ricerca Oncologica" data-category="Medicina" data-days="15" data-progress="75">
+                <article class="card">
+                    <div class="badge">Medicina</div>
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=800" alt="Onco"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Macchinario per Ricerca Oncologica</h3>
+                        <p class="card-desc">Aiutaci ad acquistare un nuovo sequenziatore genetico.</p>
+                        <div class="card-footer">
+                            <div class="progress-stats"><span>€ 15.000 raccolti</span></div>
+                            <div class="progress-track"><div class="progress-fill blue" data-width="75%"></div></div>
+                            <div class="card-meta"><span><i class="bi bi-clock"></i> 15 gg rimasti</span><span class="btn btn-primary" style="padding: 8px 15px; font-size: 0.9rem;">Scopri</span></div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+            
+            <a href="progetto.html?id=campus" class="card-link project-card" data-title="Campus Ecosostenibile: Spazi Verdi" data-category="Ambiente" data-days="30" data-progress="40">
+                <article class="card">
+                    <div class="badge green">Ambiente</div>
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="Campus"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Campus Ecosostenibile</h3>
+                        <p class="card-desc">Riqualifichiamo le aree esterne piantando 500 nuovi alberi.</p>
+                        <div class="card-footer">
+                            <div class="progress-stats"><span>€ 3.200 raccolti</span></div>
+                            <div class="progress-track"><div class="progress-fill" data-width="40%"></div></div>
+                            <div class="card-meta"><span><i class="bi bi-clock"></i> 30 gg rimasti</span><span class="btn btn-primary" style="padding: 8px 15px; font-size: 0.9rem;">Scopri</span></div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+            
+            <a href="progetto.html?id=inclusione" class="card-link project-card" data-title="Inclusione Digitale: PC per Studenti" data-category="Tecnologia" data-days="2" data-progress="95">
+                <article class="card">
+                    <div class="badge orange">Tecnologia</div>
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800" alt="PC"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Inclusione Digitale: PC</h3>
+                        <p class="card-desc">Acquisto di computer in comodato d'uso gratuito.</p>
+                        <div class="card-footer">
+                            <div class="progress-stats"><span>€ 9.500 raccolti</span></div>
+                            <div class="progress-track"><div class="progress-fill blue" data-width="95%"></div></div>
+                            <div class="card-meta"><span><i class="bi bi-clock"></i> 2 gg rimasti</span><span class="btn btn-primary" style="padding: 8px 15px; font-size: 0.9rem;">Scopri</span></div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+
+            <a href="progetto.html?id=manoscritti" class="card-link project-card" data-title="Restauro Manoscritti Antichi" data-category="Ricerca Umanistica" data-days="45" data-progress="24">
+                <article class="card">
+                    <div class="badge purple">Ricerca Umanistica</div>
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=800" alt="Manoscritti"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Restauro Manoscritti Antichi</h3>
+                        <p class="card-desc">Digitalizzazione di 15 antichi manoscritti medievali.</p>
+                        <div class="card-footer">
+                            <div class="progress-stats"><span>€ 1.200 raccolti</span></div>
+                            <div class="progress-track"><div class="progress-fill blue" data-width="24%"></div></div>
+                            <div class="card-meta"><span><i class="bi bi-clock"></i> 45 gg rimasti</span><span class="btn btn-primary" style="padding: 8px 15px; font-size: 0.9rem;">Scopri</span></div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+
+            <a href="progetto.html?id=app_psi" class="card-link project-card" data-title="App Supporto Psicologico Studenti" data-category="Medicina" data-days="20" data-progress="75">
+                <article class="card">
+                    <div class="badge">Medicina</div>
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800" alt="Psicologia"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">App Supporto Psicologico</h3>
+                        <p class="card-desc">Creazione app anonima per la salute mentale in ateneo.</p>
+                        <div class="card-footer">
+                            <div class="progress-stats"><span>€ 4.500 raccolti</span></div>
+                            <div class="progress-track"><div class="progress-fill blue" data-width="75%"></div></div>
+                            <div class="card-meta"><span><i class="bi bi-clock"></i> 20 gg rimasti</span><span class="btn btn-primary" style="padding: 8px 15px; font-size: 0.9rem;">Scopri</span></div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+
+            <a href="progetto.html?id=borse" class="card-link project-card" data-title="Borse di Studio Talenti" data-category="Ricerca Umanistica" data-days="10" data-progress="80">
+                <article class="card">
+                    <div class="badge purple">Ricerca Umanistica</div>
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800" alt="Borse"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Borse di Studio Talenti</h3>
+                        <p class="card-desc">Sostegno economico agli studenti meritevoli fuori sede.</p>
+                        <div class="card-footer">
+                            <div class="progress-stats"><span>€ 12.000 raccolti</span></div>
+                            <div class="progress-track"><div class="progress-fill blue" data-width="80%"></div></div>
+                            <div class="card-meta"><span><i class="bi bi-clock"></i> 10 gg rimasti</span><span class="btn btn-primary" style="padding: 8px 15px; font-size: 0.9rem;">Scopri</span></div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+
+            <a href="progetto.html?id=orto" class="card-link project-card" data-title="Orto Botanico Smart IoT" data-category="Ambiente" data-days="25" data-progress="65">
+                <article class="card">
+                    <div class="badge green">Ambiente</div>
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1585320806297-9794b3e4ce88?auto=format&fit=crop&q=80&w=800" alt="Orto"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Orto Botanico Smart</h3>
+                        <p class="card-desc">Automazione irrigazione con sensori internet-of-things.</p>
+                        <div class="card-footer">
+                            <div class="progress-stats"><span>€ 7.800 raccolti</span></div>
+                            <div class="progress-track"><div class="progress-fill" data-width="65%"></div></div>
+                            <div class="card-meta"><span><i class="bi bi-clock"></i> 25 gg rimasti</span><span class="btn btn-primary" style="padding: 8px 15px; font-size: 0.9rem;">Scopri</span></div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+
+            <a href="progetto.html?id=robotica" class="card-link project-card" data-title="Laboratorio Robotica Avanzata" data-category="Tecnologia" data-days="40" data-progress="73">
+                <article class="card">
+                    <div class="badge orange">Tecnologia</div>
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800" alt="Robot"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Laboratorio Robotica</h3>
+                        <p class="card-desc">Acquisto di due bracci robotici per gli ingegneri.</p>
+                        <div class="card-footer">
+                            <div class="progress-stats"><span>€ 22.000 raccolti</span></div>
+                            <div class="progress-track"><div class="progress-fill blue" data-width="73%"></div></div>
+                            <div class="card-meta"><span><i class="bi bi-clock"></i> 40 gg rimasti</span><span class="btn btn-primary" style="padding: 8px 15px; font-size: 0.9rem;">Scopri</span></div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+
+            <a href="progetto.html?id=festival" class="card-link project-card" data-title="Festival della Cultura Studentesca" data-category="Ricerca Umanistica" data-days="5" data-progress="62">
+                <article class="card">
+                    <div class="badge purple">Ricerca Umanistica</div>
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800" alt="Festival"></div>
+                    <div class="card-content">
+                        <h3 class="card-title">Festival della Cultura</h3>
+                        <p class="card-desc">Organizzazione di tre giornate d'arte e letteratura.</p>
+                        <div class="card-footer">
+                            <div class="progress-stats"><span>€ 2.500 raccolti</span></div>
+                            <div class="progress-track"><div class="progress-fill blue" data-width="62%"></div></div>
+                            <div class="card-meta"><span><i class="bi bi-clock"></i> 5 gg rimasti</span><span class="btn btn-primary" style="padding: 8px 15px; font-size: 0.9rem;">Scopri</span></div>
+                        </div>
+                    </div>
+                </article>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 Università degli Studi di Torino - Progetto HCI</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
