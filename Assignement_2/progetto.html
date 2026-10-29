@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettaglio Progetto - unitoCrowFunding</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay-bg"></div>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="brand">
+                <img src="logo-unito.png" alt="Logo UniTo" onerror="this.src='https://via.placeholder.com/150x45/fddb00/002a5c?text=UNITO';">
+                unitoCrowFunding
+            </a>
+            <div class="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="bi bi-house-door me-2"></i> Home</a></li>
+                <li><a href="esplora.html"><i class="bi bi-compass me-2"></i> Esplora Progetti</a></li>
+                <li><a href="proponi.html"><i class="bi bi-plus-circle me-2"></i> Proponi Progetto</a></li>
+                <li><a href="faq.html"><i class="bi bi-question-circle me-2"></i> FAQ</a></li>
+                <li style="margin-top: auto;"><a href="#" class="btn btn-outline" style="width: 100%;"><i class="bi bi-person"></i> Accedi</a></li>
+                <li><a href="#" class="btn btn-warning" style="width: 100%;"><i class="bi bi-lightning-charge-fill"></i> Registrati</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="breadcrumb-wrap">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="esplora.html">Esplora Progetti</a></li>
+                <li class="active" id="bread-title">Dettaglio Progetto</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- BILANCIAMENTO PROPORZIONI (Grid fissa a destra) -->
+    <main class="main-content container project-grid">
+        <div class="project-details">
+            <img id="p-img" src="https://via.placeholder.com/1200x600/eee/ccc" alt="Copertina Progetto" class="project-header-img">
+            
+            <h1 id="p-title">Caricamento...</h1>
+            
+            <!-- Tasto per pagare su MOBILE -->
+            <a href="#" class="btn btn-warning mobile-pay-btn pay-btn">
+                <i class="bi bi-heart-fill text-danger me-2"></i> Sostieni questo progetto
+            </a>
+
+            <p id="p-desc" style="font-size: 1.15rem; color: var(--text-color); margin-top: 15px;">Dettagli in caricamento...</p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
+            
+            <h3><i class="bi bi-people" style="color: var(--unito-blue);"></i> Chi siamo</h3>
+            <p>Siamo membri della comunità dell'Università degli Studi di Torino. Lavoriamo al progetto con dedizione. Referente del progetto: Prof. M. Rossi (<a href="#">contatta l'ufficio</a>).</p>
+            
+            <h3 style="margin-top: 30px;"><i class="bi bi-shield-check" style="color: var(--success);"></i> Trasparenza fondi</h3>
+            <p>Questa piattaforma è gestita direttamente dall'Ateneo. <strong>Nessuna commissione</strong> viene trattenuta da unitoCrowFunding. Il 100% della tua donazione va direttamente al dipartimento.</p>
+        </div>
+        
+        <!-- SIDEBAR -->
+        <aside class="sticky-sidebar">
+            <p style="color: var(--text-light); text-transform: uppercase; font-size: 0.85rem; font-weight: bold;">Stato della raccolta</p>
+            <h2 id="p-raised" style="font-size: 2.5rem; margin-bottom: 0;">€ 0</h2>
+            <p id="p-goal" style="color: var(--text-light);">raccolti su € 0</p>
+            
+            <div class="progress-track" style="height: 15px; margin: 20px 0;">
+                <div id="p-bar" class="progress-fill blue" style="width: 0%;"></div>
+            </div>
+            
+            <div class="flex-between" style="margin-bottom: 30px; text-align: center;">
+                <div>
+                    <h3 id="p-supporters" style="margin-bottom: 0;">0</h3>
+                    <span style="font-size: 0.85rem; color: var(--text-light);">Sostenitori</span>
+                </div>
+                <div>
+                    <h3 id="p-days" style="margin-bottom: 0; color: var(--danger);">0</h3>
+                    <span style="font-size: 0.85rem; color: var(--text-light);">Giorni rimasti</span>
+                </div>
+            </div>
+            
+            <!-- Tasto per pagare su DESKTOP -->
+            <a href="#" class="btn btn-warning desktop-pay-btn pay-btn" style="width: 100%; padding: 18px; font-size: 1.15rem; justify-content: center; box-shadow: 0 5px 15px rgba(253, 219, 0, 0.4);">
+                <i class="bi bi-heart-fill" style="color: var(--danger);"></i> Sostieni questo progetto
+            </a>
+            <p style="text-align: center; font-size: 0.8rem; margin-top: 15px; color: #999;"><i class="bi bi-lock-fill"></i> Pagamento sicuro tramite PagoPA / Stripe</p>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 Università degli Studi di Torino - Progetto HCI</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
