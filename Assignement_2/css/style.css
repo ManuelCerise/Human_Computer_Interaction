@@ -99,7 +99,7 @@ p a, .breadcrumb a, .text-link { text-decoration: underline; text-underline-offs
 
 /* Hero */
 .hero {
-    background: linear-gradient(135deg, rgba(0, 76, 147, 0.65), rgba(0, 42, 92, 0.75)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1920') center/cover fixed;
+    background: linear-gradient(135deg, rgba(0, 76, 147, 0.65), rgba(0, 42, 92, 0.75)), url('../img/hero.jpg') center/cover fixed;
     color: var(--white); padding: 120px 0; text-align: center;
 }
 .hero h1 { color: var(--white); font-size: 3.5rem; margin-bottom: 20px; }

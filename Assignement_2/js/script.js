@@ -2,55 +2,55 @@
 const projectDB = {
     'onco': {
         title: "Macchinario per Ricerca Oncologica", cat: "Medicina", catClass: "badge",
-        img: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=1200",
+        img: "img/onco.jpg",
         desc: "Il progetto mira ad acquistare un sequenziatore di ultima generazione per velocizzare l'analisi genetica delle cellule tumorali e sviluppare terapie personalizzate.",
         raised: "15.000", goal: "20.000", progress: "75%", supporters: 120, days: 15
     },
     'campus': {
         title: "Campus Ecosostenibile: Spazi Verdi", cat: "Ambiente", catClass: "badge green",
-        img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200",
+        img: "img/campus.jpg",
         desc: "Vogliamo riqualificare le aree esterne del Campus Luigi Einaudi, piantando 500 nuovi alberi e installando panchine smart con ricarica a pannelli solari.",
         raised: "3.200", goal: "8.000", progress: "40%", supporters: 45, days: 30
     },
     'inclusione': {
         title: "Inclusione Digitale: PC per Studenti", cat: "Tecnologia", catClass: "badge orange",
-        img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1200",
+        img: "img/inclusione.jpg",
         desc: "Fondo di solidarietà per l'acquisto di 50 computer portatili da dare in comodato d'uso gratuito agli studenti meritevoli con ISEE basso.",
         raised: "9.500", goal: "10.000", progress: "95%", supporters: 215, days: 2
     },
     'manoscritti': {
         title: "Restauro Manoscritti Antichi", cat: "Ricerca Umanistica", catClass: "badge purple",
-        img: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=1200",
+        img: "img/manoscritti.jpg",
         desc: "Intervento di restauro urgente su 15 manoscritti medievali della Biblioteca Bobbio, per digitalizzarli e renderli fruibili a tutti gli studenti.",
         raised: "1.200", goal: "5.000", progress: "24%", supporters: 18, days: 45
     },
     'app_psi': {
         title: "App Supporto Psicologico Studenti", cat: "Medicina", catClass: "badge",
-        img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1200",
+        img: "img/app_psi.jpg",
         desc: "Sviluppo di un'applicazione mobile gratuita per fornire supporto psicologico anonimo e immediato agli studenti in burnout.",
         raised: "4.500", goal: "6.000", progress: "75%", supporters: 85, days: 20
     },
     'borse': {
         title: "Borse di Studio Talenti", cat: "Ricerca Umanistica", catClass: "badge purple",
-        img: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1200",
+        img: "img/borse.jpg",
         desc: "Creazione di 10 borse di studio aggiuntive per permettere a studenti fuori sede di coprire i costi di alloggio e materiale didattico.",
         raised: "12.000", goal: "15.000", progress: "80%", supporters: 150, days: 10
     },
     'orto': {
         title: "Orto Botanico Smart IoT", cat: "Ambiente", catClass: "badge green",
-        img: "https://images.unsplash.com/photo-1585320806297-9794b3e4ce88?auto=format&fit=crop&q=80&w=1200",
+        img: "img/orto.jpg",
         desc: "Installazione di sensori IoT per il monitoraggio dell'umidità e automatizzazione dell'irrigazione nell'Orto Botanico Universitario.",
         raised: "7.800", goal: "12.000", progress: "65%", supporters: 92, days: 25
     },
     'robotica': {
         title: "Laboratorio Robotica Avanzata", cat: "Tecnologia", catClass: "badge orange",
-        img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200",
+        img: "img/robotica.jpg",
         desc: "Acquisto di due nuovi bracci robotici industriali per permettere agli studenti di ingegneria di fare pratica su strumentazioni all'avanguardia.",
         raised: "22.000", goal: "30.000", progress: "73%", supporters: 310, days: 40
     },
     'festival': {
         title: "Festival della Cultura Studentesca", cat: "Ricerca Umanistica", catClass: "badge purple",
-        img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=1200",
+        img: "img/festival.jpg",
         desc: "Finanziamento per ospitare autori, scienziati e artisti internazionali per un festival di tre giorni aperto a tutta la comunità cittadina.",
         raised: "2.500", goal: "4.000", progress: "62%", supporters: 45, days: 5
     }
@@ -73,8 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 2. Logic URL Params per rendering dinamico
-    const urlParams = new URLSearchParams(window.location.search);
-    const projId = urlParams.get('id');
+    // Lettura dell'ID tramite Hash (#) per supportare il protocollo file:// senza server
+    const projId = window.location.hash ? window.location.hash.substring(1) : null;
 
     // Popola Pagina Progetto
     if (window.location.pathname.includes('progetto.html')) {
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('p-days').innerText = p.days;
         
         document.querySelectorAll('.pay-btn').forEach(btn => {
-            btn.href = `donazione.html?id=${id}`;
+            btn.href = `donazione.html#${id}`;
         });
         document.title = p.title + " - unitoCrowFunding";
     }
@@ -107,8 +107,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('d-cat').innerText = p.cat;
         document.getElementById('d-cat').className = p.catClass + " mb-3";
         
-        document.getElementById('d-back').href = `progetto.html?id=${id}`;
-        document.getElementById('d-cancel').href = `progetto.html?id=${id}`;
+        document.getElementById('d-back').href = `progetto.html#${id}`;
+        document.getElementById('d-cancel').href = `progetto.html#${id}`;
     }
 
     // 3. Sistema di Ricerca e Auto-Suggest in Esplora
