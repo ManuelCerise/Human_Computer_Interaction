@@ -44,9 +44,12 @@
             <h1 style="margin-bottom: 10px; text-align: center;"><i class="bi bi-question-circle text-primary me-2"></i> Centro Assistenza e FAQ</h1>
             <p style="text-align: center; margin-bottom: 40px; color: var(--text-light);">Hai dubbi su come donare o proporre un progetto? Trova le risposte qui sotto.</p>
             
-            <div class="form-group" style="position: relative; margin-bottom: 40px;">
+            <!-- BARRA DI RICERCA (z-index corretto a 100 per non sovrapporsi alla navbar) -->
+            <div class="form-group" style="position: relative; margin-bottom: 40px; z-index: 100;">
                 <i class="bi bi-search" style="position: absolute; left: 15px; top: 16px; color: #999;"></i>
-                <input type="text" class="form-control" placeholder="Cerca tra le domande..." style="padding-left: 45px; border-color: #ddd;">
+                <input type="text" id="faq-search" class="form-control" placeholder="Cerca tra le domande..." style="padding-left: 45px; border-color: #ddd;" autocomplete="off">
+                <!-- Pannello Suggerimenti -->
+                <ul id="faq-suggestions" style="position: absolute; top: 100%; left: 0; width: 100%; background: #fff; border: 1px solid #ced4da; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.12); list-style: none; padding: 0; margin-top: 5px; max-height: 250px; overflow-y: auto; display: none;"></ul>
             </div>
             
             <h3 style="margin-bottom: 20px; color: var(--unito-dark-blue);">Per i Donatori</h3>
@@ -97,5 +100,66 @@
         </div>
     </footer>
     <script src="js/script.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.getElementById('faq-search');
+            const suggestionsList = document.getElementById('faq-suggestions');
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            if (searchInput && suggestionsList) {
+                searchInput.addEventListener('input', function () {
+                    const query = this.value.toLowerCase().trim();
+                    suggestionsList.innerHTML = '';
+                    
+                    if (query.length === 0) {
+                        suggestionsList.style.display = 'none';
+                        accordionItems.forEach(item => item.style.display = 'block');
+                        return;
+                    }
+
+                    let matches = 0;
+                    accordionItems.forEach(item => {
+                        const questionBtn = item.querySelector('.accordion-header');
+                        const questionText = questionBtn.textContent.trim();
+                        
+                        if (questionText.toLowerCase().includes(query)) {
+                            matches++;
+                            
+                            const li = document.createElement('li');
+                            li.style.cssText = "padding: 12px 18px; cursor: pointer; border-bottom: 1px solid #f8f9fa; font-weight: 500; color: #333; transition: background 0.2s;";
+                            li.innerHTML = `<i class="bi bi-search me-2" style="color: #999;"></i> ${questionText}`;
+                            
+                            li.addEventListener('mouseenter', () => { li.style.backgroundColor = '#e6f0fa'; li.style.color = '#004c93'; });
+                            li.addEventListener('mouseleave', () => { li.style.backgroundColor = 'transparent'; li.style.color = '#333'; });
+
+                            li.addEventListener('click', () => {
+                                searchInput.value = questionText;
+                                suggestionsList.style.display = 'none';
+                                
+                                accordionItems.forEach(acc => {
+                                    if (acc === item) {
+                                        acc.style.display = 'block';
+                                    } else {
+                                        acc.style.display = 'none';
+                                    }
+                                });
+                            });
+                            
+                            suggestionsList.appendChild(li);
+                        }
+                    });
+
+                    suggestionsList.style.display = matches > 0 ? 'block' : 'none';
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!searchInput.contains(e.target) && !suggestionsList.contains(e.target)) {
+                        suggestionsList.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
